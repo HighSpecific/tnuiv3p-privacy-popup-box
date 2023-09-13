@@ -1,0 +1,72 @@
+@use './mixins/mixins.scss' as *;
+
+@include b(privacy-popup-box) {
+  position: relative;
+  width: 100%;
+  padding: 30rpx;
+  padding-top: 50rpx;
+
+  @include e(title) {
+    font-size: 36rpx;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  @include e(content) {
+    margin-top: 30rpx;
+    font-size: 24rpx;
+    text-align: justify;
+    color: var(--tn-color-gray);
+
+    @include m(protocol) {
+      color: var(--tn-color-blue);
+    }
+  }
+
+  @include e(operation-container) {
+    position: relative;
+    margin-top: 40rpx;
+  }
+
+  /* 中间弹出 start */
+  @include when(center) {
+    @include e(operation-container) {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @include e(agree-btn) {
+      line-height: 1;
+      padding: 26rpx;
+      border-radius: 100rpx;
+    }
+    @include e(disagree-btn) {
+      line-height: 1;
+      padding: 30rpx;
+    }
+  }
+  /* 中间弹出 end */
+
+  /* 底部弹出 start */
+  @include when(bottom) {
+    padding-bottom: 70rpx;
+    @include e(operation-container) {
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @include e(agree-btn) {
+      width: calc(100% / 2 - 30rpx);
+      padding: 20rpx;
+      border-radius: 100rpx;
+    }
+    @include e(disagree-btn) {
+      width: calc(100% / 2 - 30rpx);
+      padding: 20rpx;
+      border-radius: 100rpx;
+    }
+  }
+  /* 底部弹出 end */
+}
