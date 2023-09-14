@@ -19,17 +19,20 @@ export const usePrivacyPopupBox = (
   // 弹框关闭事件
   const popupCloseHandle = () => {
     emits('update:modelValue', false)
+    emits('close')
   }
 
   // 同意按钮点击事件
   const agreeBtnClickHandle = () => {
     emits('agree')
-    popupCloseHandle()
   }
   // 不同意按钮点击事件
   const disagreeBtnClickHandle = () => {
     emits('disagree')
-    popupCloseHandle()
+  }
+  // 同意隐私协议点击事件
+  const agreePrivacyAuthorizationHandle = () => {
+    emits('agree-privacy-authorization')
   }
 
   // 跳转到用户隐私协议页面
@@ -45,6 +48,7 @@ export const usePrivacyPopupBox = (
     popupCloseHandle,
     agreeBtnClickHandle,
     disagreeBtnClickHandle,
+    agreePrivacyAuthorizationHandle,
     protocolClickHandle,
   }
 }

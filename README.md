@@ -54,24 +54,25 @@ const showPrivacyPopup = ref(false)
 
 ### Props
 
-| 属性名                  | 说明                                                         | 类型    | 默认值           | 可选值   |
-| ----------------------- | ------------------------------------------------------------ | ------- | ---------------- | -------- |
-| `v-model`/`model-value` | 控制隐私弹框的显示与隐藏                                     | Boolean | `false`          | `true`   |
-| open-direction          | 隐私弹框弹出的位置                                           | String  | `center`         | `bottom` |
-| title                   | 隐私弹框标题                                                 | String  | 用户隐私保护提示 | -        |
-| agree-text              | 同意隐私按钮文案                                             | String  | 同意并继续       | -        |
-| disagree-text           | 不同意隐私按钮文案                                           | String  | 不同意           | -        |
-| agree-bg-color          | 同意按钮背景颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/background.html) | String  | -                | -        |
-| agree-color             | 同意按钮字体颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/text.html) | String  | -                | -        |
-| disagree-bg-color       | 不同意按钮背景颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/background.html) | String  | -                | -        |
-| disagree-color          | 不同意按钮字体颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/text.html) | String  | -                | -        |
-
-
+| 属性名                  | 说明                                                                                                        | 类型    | 默认值               | 可选值   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------- | ------- | -------------------- | -------- |
+| `v-model`/`model-value` | 控制隐私弹框的显示与隐藏                                                                                    | Boolean | `false`              | `true`   |
+| open-direction          | 隐私弹框弹出的位置                                                                                          | String  | `center`             | `bottom` |
+| title                   | 隐私弹框标题                                                                                                | String  | 用户隐私保护提示     | -        |
+| agree-text              | 同意隐私按钮文案                                                                                            | String  | 同意并继续           | -        |
+| disagree-text           | 不同意隐私按钮文案                                                                                          | String  | 不同意               | -        |
+| privacy-contract-text   | 隐私保护指引文案                                                                                            | String  | 《用户隐私保护指引》 | -        |
+| agree-bg-color          | 同意按钮背景颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/background.html)   | String  | -                    | -        |
+| agree-color             | 同意按钮字体颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/text.html)         | String  | -                    | -        |
+| disagree-bg-color       | 不同意按钮背景颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/background.html) | String  | -                    | -        |
+| disagree-color          | 不同意按钮字体颜色，以tn开头使用图鸟[内置颜色](https://vue3.tuniaokj.com/zh-CN/guide/style/text.html)       | String  | -                    | -        |
 
 ### Emits
 
-| 事件名        | 说明                 | 类型         |
-| ------------- | -------------------- | ------------ |
-| agree         | 点击同意按钮事件     | `() => void` |
-| disagree      | 点击不同意按钮事件   | `() => void` |
-| open-protocol | 点击查看隐私协议事件 | `() => void` |
+| 事件名                      | 说明                 | 类型         |
+| --------------------------- | -------------------- | ------------ |
+| close                       | 弹框关闭事件         | `() => void` |
+| agree                       | 点击同意按钮事件     | `() => void` |
+| disagree                    | 点击不同意按钮事件   | `() => void` |
+| open-protocol               | 点击查看隐私协议事件 | `() => void` |
+| agree-privacy-authorization | 同意隐私协议回调事件 | `() => void` |

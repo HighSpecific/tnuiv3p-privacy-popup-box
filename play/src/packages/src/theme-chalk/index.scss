@@ -35,6 +35,10 @@
       margin-left: auto;
       margin-right: auto;
     }
+    @include e(agree-btn-container) {
+      position: relative;
+      width: 100%;
+    }
     @include e(agree-btn) {
       line-height: 1;
       padding: 26rpx;
@@ -57,8 +61,11 @@
       align-items: center;
       justify-content: space-between;
     }
-    @include e(agree-btn) {
+    @include e(agree-btn-container) {
       width: calc(100% / 2 - 30rpx);
+    }
+    @include e(agree-btn) {
+      width: 100%;
       padding: 20rpx;
       border-radius: 100rpx;
     }

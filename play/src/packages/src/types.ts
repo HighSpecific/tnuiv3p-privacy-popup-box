@@ -7,6 +7,18 @@ export const privacyPopupBoxOpenDirection = ['center', 'bottom'] as const
 export type PrivacyPopupBoxOpenDirection =
   (typeof privacyPopupBoxOpenDirection)[number]
 
+export interface WXPrivacySettingRes {
+  needAuthorization: boolean
+  privacyContractName: string
+}
+export type WXPrivacyAuthorizationResolve = (res: {
+  buttonId?: string
+  event: string
+}) => void
+export interface WXPrivacyAuthorizationEventInfo {
+  referrer: string
+}
+
 export const privacyPopupBoxProps = buildProps({
   /**
    * @description 是否显示
@@ -42,6 +54,13 @@ export const privacyPopupBoxProps = buildProps({
     default: '不同意',
   },
   /**
+   * @description 隐私保护指引文案
+   */
+  privacyContractText: {
+    type: String,
+    default: '《用户隐私保护指引》',
+  },
+  /**
    * @description 同意按钮背景颜色，以tn开头使用图鸟内置颜色
    */
   agreeBgColor: String,
@@ -61,9 +80,11 @@ export const privacyPopupBoxProps = buildProps({
 
 export const privacyPopupBoxEmits = {
   [UPDATE_MODEL_EVENT]: (value: boolean) => isBoolean(value),
+  close: () => true,
   agree: () => true,
   disagree: () => true,
   'open-protocol': () => true,
+  'agree-privacy-authorization': () => true,
 }
 
 export type PrivacyPopupBoxProps = ExtractPropTypes<typeof privacyPopupBoxProps>

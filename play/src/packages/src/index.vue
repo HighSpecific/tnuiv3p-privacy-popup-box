@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import TnPopup from '@tuniao/tnui-vue3-uniapp/components/popup/src/popup.vue'
+import TnButton from '@tuniao/tnui-vue3-uniapp/components/button/src/button.vue'
 import { privacyPopupBoxEmits, privacyPopupBoxProps } from './types'
 import {
   usePrivacyPopupBox,
@@ -14,6 +15,7 @@ const {
   popupCloseHandle,
   agreeBtnClickHandle,
   disagreeBtnClickHandle,
+  agreePrivacyAuthorizationHandle,
   protocolClickHandle,
 } = usePrivacyPopupBox(props, emits)
 const { ns, agreeBtnClass, agreeBtnStyle, disagreeBtnClass, disagreeBtnStyle } =
@@ -39,19 +41,27 @@ const { ns, agreeBtnClass, agreeBtnStyle, disagreeBtnClass, disagreeBtnStyle } =
             :class="[ns.em('content', 'protocol')]"
             @tap.stop="protocolClickHandle"
           >
-            《用户隐私保护指引》
+            {{ privacyContractText }}
           </text>
           ，请您在点击同意之前仔细阅读并充分理解相关条款内容，我们将严格按照指引内容使用您的信息，以便为您提供更好的服务。
         </slot>
       </view>
       <view :class="[ns.e('operation-container')]">
-        <view
-          :class="[agreeBtnClass]"
-          class="tn-flex-center"
-          :style="agreeBtnStyle"
-          @tap.stop="agreeBtnClickHandle"
-        >
-          {{ agreeText }}
+        <view :class="[ns.e('agree-btn-container')]">
+          <TnButton
+            open-type="agreePrivacyAuthorization"
+            only-button
+            @click="agreeBtnClickHandle"
+            @agreeprivacyauthorization="agreePrivacyAuthorizationHandle"
+          >
+            <view
+              :class="[agreeBtnClass]"
+              class="tn-flex-center"
+              :style="agreeBtnStyle"
+            >
+              {{ agreeText }}
+            </view>
+          </TnButton>
         </view>
         <view
           :class="[disagreeBtnClass]"
